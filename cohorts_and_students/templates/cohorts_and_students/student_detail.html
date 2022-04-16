@@ -1,0 +1,21 @@
+<div>
+  <h2>{{student.first_name}} {{student.last_name}}</h2>
+  <p>Member of {{cohort.cohort_name}}</p>
+  <p>You are
+    {% if gender.confidence > 90 %}
+    probably
+    {% else %}
+    maybe
+    {% endif %}
+    a {{gender.gender}}</p>
+
+  <br>
+  <br>
+  <a href="{% url 'edit_student' cohort.id student.slug%}"> Edit Student</a>
+  <br>
+  <br>
+  <form name="delete_cohort" method="POST" action="{% url 'delete_student' cohort_id=cohort.id student_id=student.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete student" />
+  </form>
+</div>

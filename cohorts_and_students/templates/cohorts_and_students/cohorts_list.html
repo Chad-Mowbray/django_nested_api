@@ -1,0 +1,11 @@
+<h1> All Cohorts </h1>
+
+<ul>
+  {% for cohort in cohorts %}
+    <div>
+      <li><a href="{% url 'cohort_detail' cohort_id=cohort.id %}">{{ cohort.cohort_name }}</a></li>
+    </div>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'new_cohort' %}">Create a new cohort</a>

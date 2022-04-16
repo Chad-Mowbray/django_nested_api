@@ -1,0 +1,20 @@
+
+<div>
+  <h2>{{ cohort.cohort_name }}</h2>
+  <p> Start Date: {{ cohort.start_date|linebreaksbr }}</p>
+  <p> End Date: {{ cohort.end_date|linebreaksbr }}</p>
+  <br>
+  <br>
+  <a href="{% url 'edit_cohort' cohort_id=cohort.id %}"> Edit cohort</a>
+  <br>
+  <br>
+  <form name="delete_cohort" method="POST" action="{% url 'delete_cohort' cohort_id=cohort.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete cohort" />
+  </form>
+</div>
+
+<hr/>
+<div>
+  <a href="{% url 'student_list' cohort_id=cohort.id %}">Students in this cohort</a>
+</div>
